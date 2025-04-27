@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Delete Student</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h1 {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    button {
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 14px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #c82333;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      color: #6c757d;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Are you sure you want to delete "{{ post }}"?</h1>
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit">Yes, Delete</button>
+    </form>
+    <a href="{% url 'addpost' %}">Cancel</a>
+  </div>
+</body>
+</html>

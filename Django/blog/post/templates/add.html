@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 80%;
+      margin: 0 auto;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 10px 15px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f4f4f4;
+      font-weight: bold;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .buttons {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .btn {
+      padding: 10px 15px;
+      font-size: 14px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .btn-success {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .btn-secondary {
+      background-color: #6c757d;
+      color: white;
+    }
+
+    .btn-success:hover {
+      background-color: #218838;
+    }
+
+    .btn-secondary:hover {
+      background-color: #5a6268;
+    }
+  </style>
+</head>
+<body>
+  <h1>{% if post %}Edit{% else %}Add{% endif %} post</h1>
+  
+  <form method="post">
+    {% csrf_token %}
+    <table>
+      <tr>
+        <th>Field</th>
+        <th>Input</th>
+      </tr>
+      
+      <tr>
+        <td><label for="title">Title</label></td>
+        <td><input type="text" name="title" id="title" value="{{ post.title|default:'' }}"></td>
+      </tr>
+      <tr>
+        <td><label for="content">Content</label></td>
+        <td><input type="text" name="content" id="content" value="{{ post.content|default:'' }}"></td>
+      </tr>
+      <tr>
+        <td><label for="author">Author</label></td>
+        <td><input type="text" name="author" id="author" value="{{ post.author|default:'' }}"></td>
+      </tr>
+    </table>
+    <div class="buttons">
+      <button type="submit" class="btn btn-success">Save</button>
+      <a href="{% url 'addpost' %}" class="btn btn-secondary">Cancel</a>
+    </div>
+  </form>
+</body>
+</html>

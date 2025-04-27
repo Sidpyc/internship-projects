@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        /* Navbar styling */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        .navbar .brand {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .navbar .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Table styling */
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: white;
+        }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        table tr:hover {
+            background-color: #ddd;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Button styling */
+        .add-item {
+            display: block;
+            width: fit-content;
+            margin: 20px auto;
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .add-item:hover {
+            background-color: #218838;
+        }
+
+        .admin{
+            color:white;
+            
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="brand">Sidd</div>
+        <div class="nav-links">
+            <a href="/">Electronics</a>
+            <a href="/fashion">Fashion</a>
+            <a href="">Groceries</a>
+        </div>
+        <div class="admin"><a href="/admin">Admin</a></div>
+    </div>
+
+    <!-- Main content -->
+    <h1 style="text-align: center; margin-top: 20px;">List of Groceries</h1>
+    <a href="{% url 'grocery_add'  %}" class="add-item">Add a Grocery Item</a>
+    <table>
+        <tr>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Product Price</th>
+            <th>Product Description</th>
+            <th>Actions</th>
+        </tr>
+
+        {% for product in product %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.description }}</td>
+                <td>
+                    <a href="{% url 'grocery_edit' product.pk %}">Edit</a> |
+                    <a href="{% url 'grocery_delete' product.pk %}" style="color: red;">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+
+    </table>
+</body>
+</html>

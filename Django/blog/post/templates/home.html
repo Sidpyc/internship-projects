@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogPost</title>
+    <style>
+         * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0; 
+        }
+
+        nav {
+    background-color: #333; 
+    padding: 12px 20px; /* Add some more padding */
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Center the nav items */
+}
+
+nav li {
+    margin: 0 15px; /* Space out the nav items */
+}
+
+nav li a {
+    color: #ddd; /* Light grey text */
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: uppercase; /* All uppercase letters */
+    transition: all 0.3s ease;
+    padding: 5px 10px; /* Padding around the link */
+    border-radius: 4px; /* Rounded link corners */
+}
+
+nav li a:hover {
+    color: white; /* Change text color to white on hover */
+    background-color: #666; /* Grey background on hover */
+    text-decoration: underline; /* Underline on hover */
+    transform: scale(1.05); /* Slightly enlarge the link on hover */
+}
+h1 {
+    text-align: center;
+    font-family: 'Helvetica Neue', sans-serif; /* Clean modern font */
+    font-size: 50px; /* Larger font size for emphasis */
+    color: #4A4A4A; /* Dark grey color for the text */
+    margin: 50px 0; /* Adds space above and below */
+    text-transform: uppercase; /* Makes the text more impactful */
+    letter-spacing: 3px; /* Spacing between the letters */
+    font-weight: 600; /* Semi-bold text */
+}
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="http://127.0.0.1:8000/">Home</a></li>
+            <li><a href="{% url 'addpost' %}">PostPage</a></li>
+
+            
+        </ul>
+        <div class="user-icon">
+            <a href="/admin">
+                admin
+            </a>
+        </div>
+    </nav>
+
+    <h1>Welcome to the BlogPost</h1>
+
+</body>
+</html>
